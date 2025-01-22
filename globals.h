@@ -136,7 +136,6 @@ extern char	ifname[1024],
 extern struct sockaddr_in icmp_ip_src, icmp_ip_dst, icmp_gw;
 extern struct SOCKADDR local, remote;
 extern struct itimerval usec_delay;
-extern volatile struct delaytable_element delaytable[TABLESIZE];
 extern struct hcmphdr *hcmphdr_p;
 
 extern long long sum_bytes;

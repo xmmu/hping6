@@ -380,8 +380,6 @@ struct ars_layer_info {
 	int layer_id;
 };
 
-/* ARS layer info table */
-struct ars_layer_info ars_linfo[ARS_TYPE_SIZE];
 
 /* ARS interface managment structure and defines */
 #define ARS_IF_UP	(1 << 0)

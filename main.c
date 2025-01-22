@@ -170,7 +170,6 @@ struct SOCKADDR
 
 struct itimerval usec_delay;
 volatile struct delaytable_element delaytable[TABLESIZE];
-
 struct hcmphdr *hcmphdr_p; /* global pointer used by send_hcmp to transfer
 			      hcmp headers to data_handler */
 

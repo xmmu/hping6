@@ -22,6 +22,7 @@ static int icmp_unreach_rtt(void *quoted_ip, int size,
 			    int *seqp, float *ms_delay);
 static void print_tcp_timestamp(void *tcp, int tcpsize);
 static int recv_icmp(void *packet, size_t size);
+static int recv_icmp6(void *packet, size_t size);
 static int recv_udp(void *packet, size_t size);
 static int recv_tcp(void *packet, size_t size);
 static void hex_dump(void *packet, int size);

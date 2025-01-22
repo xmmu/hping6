@@ -398,6 +398,9 @@ struct pseudohdr6
 #define PSEUDOHDR_SIZE sizeof(struct pseudohdr)
 #define PSEUDOHDR6_SIZE sizeof(struct pseudohdr6)
 
+// hping2.h
+#ifndef HPING2_H
+#define HPING2_H
 /*
  * hping replies delay table
  */
@@ -408,8 +411,8 @@ struct delaytable_element {
 	time_t usec;
 	int status;
 };
-
-volatile struct delaytable_element delaytable[TABLESIZE];
+extern volatile struct delaytable_element delaytable[TABLESIZE];
+#endif // HPING2_H
 
 /* protos */
 void	nop(void);				/* nop */
@@ -424,9 +427,11 @@ void	send_rawip (void);
 void	send_tcp(void);
 void	send_udp(void);
 void	send_icmp(void);
+void	send_icmp6(void);
 void	send_hcmp(__u8 type, __u32 arg);	/* send hcmp packets */
 void	send_ip (char*, char*, char*, unsigned int, int, unsigned short,
 		 char*, char);
+void	send_ip6 (char *src, char *dst, char *data, unsigned int datalen);
 void	send_ip_handler(char *packet, unsigned int size); /* fragmentation
                                                              handler */
 void	wait_packet(void);			/* handle incoming packets */
@@ -434,8 +439,11 @@ void	print_statistics(int);
 void	show_usage(void);
 void	show_version(void);
 void	resolve(struct sockaddr*, char*);	/* resolver */
+void	resolve6(struct sockaddr*, char*);	/* resolver6 */
 void	log_icmp_unreach(const char*, unsigned short);/* ICMP unreachable logger */
+void	log_icmp6_unreach(const char*, unsigned short);/* ICMP unreachable logger */
 void	log_icmp_timeexc(const char*, unsigned short);/* ICMP time exceeded logger */
+void	log_icmp6_ptb(const char *src_addr, __u32 mtu);
 time_t	get_usec(void);				/* return current usec */
 time_t	get_midnight_ut_ms(void);		/* ms from UT midnight */
 __u16	cksum(__u16 *buf, int nwords);		/* compute 16bit checksum */
